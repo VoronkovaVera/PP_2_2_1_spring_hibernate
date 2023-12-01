@@ -16,12 +16,12 @@ public class CarDaoImp implements CarDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public void add(Car car) {
+    public void addCar(Car car) {
         sessionFactory.getCurrentSession().save(car);
     }
 
     @Override
-    public List<User> listCar(String model, int series) {
+    public List<User> printCar(String model, int series) {
         Query query = sessionFactory.getCurrentSession()
                 .createQuery("from User where car.model = :model and car.series = :series");
         query.setParameter("model", model);

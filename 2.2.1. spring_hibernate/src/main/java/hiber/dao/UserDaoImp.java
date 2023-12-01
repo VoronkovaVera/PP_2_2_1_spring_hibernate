@@ -20,16 +20,16 @@ public class UserDaoImp implements UserDao {
     private CarDao carDao;
 
     @Override
-    public void add(User user) {
+    public void addUser(User user) {
         if (user.getCar() != null) {
-            carDao.add(user.getCar());
+            carDao.addCar(user.getCar());
         }
         sessionFactory.getCurrentSession().save(user);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<User> listUsers() {
+    public List<User> printUsers() {
         TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User");
         return query.getResultList();
     }
