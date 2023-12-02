@@ -1,6 +1,7 @@
 package hiber.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name = "users")
@@ -20,6 +21,7 @@ public class User {
    private String email;
 
    @OneToOne(fetch = FetchType.EAGER)
+   @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
    @JoinColumn(name = "car_id")
    private Car car;
 
